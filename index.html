@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Pokedex</title>
+    <link rel="shortcut icon" href="./Assets/images/pokeapi_256.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Styles/cards.css">
+
+    <script src="./main.js"></script>
+
+
 </head>
 <body>
-    
+    <header>
+        <section class="content-headooter">
+            <img src="./Assets/images/pokeapi_256.png" alt="pokeapi logo">
+            <h1>Aline's Pokedex</h1>
+            <div id="search-bar">
+                <p>Search:</p>
+                <input type="text" data-id="search-input">
+            </div>
+        </section>
+    </header>
+
+    <main data-id="content">
+        <section class="content-main">
+            <div id="card-wrapper">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="content-headooter" id="footer-content">
+            <p>&#169; Aline 2026</p>
+        </section>
+    </footer>
 </body>
 </html>
