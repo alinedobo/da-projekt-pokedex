@@ -3,4 +3,12 @@
     height: 90%;
     width: 100%;
     padding: 16px;
+
+    .poke-card{
+        width: 250px;
+        height: fit-content;
+        background: blue;
+        color: white;
+        font-size: 30px;
+    }
 }
