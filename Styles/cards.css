@@ -2,14 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     background: yellow;
-    height: 90%;
     width: 100%;
     padding: 16px;
     gap: 8px;
 
     .poke-card{
-        width: 300px;
-        height: fit-content;
+        width: 200px;
+        height: 200px;
         background: blue;
         color: white;
         font-size: 30px;

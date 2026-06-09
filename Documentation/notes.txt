@@ -1,0 +1,3 @@
+PROBLEM: pokemons ohne zweiten Typ rendern
+LOOM: https://www.loom.com/share/9d48827911874e61bc44361fc215aba4
+URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
