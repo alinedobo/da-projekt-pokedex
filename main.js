@@ -9,7 +9,7 @@ const result = [];
 
 
 async function getPokemon() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=21&offset=0');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++){
@@ -29,16 +29,21 @@ function renderCards(result) {
     for (let j = 0; j < result.length; j++){
         let pokemonName = result[j].name;
         let pokemonRank = result[j].id;
-        let pokemonSprite = result[j].sprites.back_default;
+        let pokemonSprite = result[j].sprites.other.home.front_default;
         let pokemonTypeOne = result[j].types[0].type.name;
 
         if(result[j].types.length > 1){
             let pokemonTypeTwo = result[j].types[1].type.name;
-            cardWrapperRef.innerHTML += getTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo);     
+            cardWrapperRef.innerHTML += getTypeTwo(j, pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo);     
         } else{
-            cardWrapperRef.innerHTML += getNoTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne);
+            cardWrapperRef.innerHTML += getNoTypeTwo(j, pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne);
         }
     }
 }
 
 
+const dialogRef = document.getElementById("dialog-popup");
+
+function showFullCard(index){
+    dialogRef.showModal();
+}
