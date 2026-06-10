@@ -42,8 +42,10 @@ function renderCards(result) {
 }
 
 
-const dialogRef = document.getElementById("dialog-popup");
 
-function showFullCard(index){
+function showFullCard(j){
+    const dialogRef = document.getElementById("dialog-popup");
     dialogRef.showModal();
+
+    dialogRef.innerHTML = 
 }

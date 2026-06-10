@@ -1,3 +1,3 @@
-PROBLEM: pokemons ohne zweiten Typ rendern
-LOOM: https://www.loom.com/share/9d48827911874e61bc44361fc215aba4
+PROBLEM: dialog öffnet sich nicht
+LOOM: https://www.loom.com/share/fb912b0029834be29df0a8d981b2f5cc
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
