@@ -1,31 +1,31 @@
-function getTypeTwo(j, pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo){
+function getTypeTwo(j, result){
     return /*html*/ `
-            <div class="poke-card ${pokemonTypeOne}" onclick="showFullCard(${j})">
+            <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
                 <div class="card-head">
-                    <h2>${pokemonName}</h2>
-                    <p>#${pokemonRank}</p>
+                    <h2>${result[j].name}</h2>
+                    <p>#${result[j].id}</p>
                 </div>
                 <div class="pokemon-types">
-                    <p class="pokemon-type ${pokemonTypeOne}">${pokemonTypeOne}</p>
-                    <p class="pokemon-type">${pokemonTypeTwo}</p>
+                    <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                    <p class="pokemon-type">${result[j].types[1].type.name}</p>
                 </div>
-                <img src="${pokemonSprite}" alt="image of ${pokemonName}">
+                <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }
 
 
-function getNoTypeTwo(j, pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne){
+function getNoTypeTwo(j, result){
     return /*html*/ `
-            <div class="poke-card ${pokemonTypeOne}" onclick="showFullCard(${j})">
+            <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
                 <div class="card-head">
-                    <h2>${pokemonName}</h2>
-                    <p>#${pokemonRank}</p>
+                    <h2>${result[j].name}</h2>
+                    <p>#${result[j].id}</p>
                 </div>
                 <div class="pokemon-types">
-                    <p class="pokemon-type ${pokemonTypeOne}">${pokemonTypeOne}</p>
+                    <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
                 </div>
-                <img src="${pokemonSprite}" alt="image of ${pokemonName}">
+                <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }
