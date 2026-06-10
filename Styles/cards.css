@@ -3,31 +3,66 @@
     flex-wrap: wrap;
     background: yellow;
     width: 100%;
-    padding: 16px;
+    padding: 8px;
     gap: 8px;
+    justify-content: center;
+    align-items: flex-start;
 
     .poke-card{
-        width: 200px;
+        width: 312px;
         height: 200px;
-        background: blue;
+        background: lightblue;
         color: white;
         font-size: 30px;
         border: white 1px solid;
         display: flex;
         flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        border-radius: 8px;
 
         .card-head{
             width: 100%;
             height: fit-content;
             display: flex;
             justify-content: space-between;
+            border: 1px solid wheat;
+
+            h2{
+                text-transform: capitalize;
+                font-size: 36px;
+            }
         }
 
         .card-body{
             width: 100%;
-            height: fit-content;
+            height: 100%;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: 20px;
+            border: 1px solid pink;
+
+            p{
+                text-transform: capitalize;
+                font-size: 24px;
+            }
+
+            img{
+                height: 100%;
+            }
+
+            .pokemon-types{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                
+                .pokemon-type{
+                    background-color: plum;
+                    border-radius: 8px;
+                    padding: 4px 8px;
+                }
+            }
         }
     }
 }

@@ -4,10 +4,12 @@ function init(){
     getPokemon();
 }
 
+
 const result = [];
 
+
 async function getPokemon() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=21&offset=0');
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++){
@@ -15,7 +17,7 @@ async function getPokemon() {
         let singlePokemonData = await response.json();
         result.push(singlePokemonData);
     }
-
+    
     renderCards(result);
 }
 
@@ -30,51 +32,13 @@ function renderCards(result) {
         let pokemonSprite = result[j].sprites.back_default;
         let pokemonTypeOne = result[j].types[0].type.name;
 
-        if(result[j].types[1].type.name === 'undefined'){
-            console.log("type 2 undefined");
-            cardWrapperRef.innerHTML += getNoTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne);
-
-        } else{
-            console.log("type 2 exists")
+        if(result[j].types.length > 1){
             let pokemonTypeTwo = result[j].types[1].type.name;
-            cardWrapperRef.innerHTML += getTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo);
+            cardWrapperRef.innerHTML += getTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo);     
+        } else{
+            cardWrapperRef.innerHTML += getNoTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne);
         }
     }
 }
 
 
-function getTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne, pokemonTypeTwo){
-    return /*html*/ `
-            <div class="poke-card">
-                <div class="card-head">
-                    <p>${pokemonName}</p>
-                    <p>${pokemonRank}</p>
-                </div>
-                <div class="card-body">
-                    <div class="pokemon-type">
-                        <p>${pokemonTypeOne}</p>
-                        <p>${pokemonTypeTwo}</p>
-                    </div>
-                    <img src="${pokemonSprite}" alt="">
-                </div>
-            </div>
-        `;
-}
-
-
-function getNoTypeTwo(pokemonName, pokemonRank, pokemonSprite, pokemonTypeOne){
-    return /*html*/ `
-            <div class="poke-card">
-                <div class="card-head">
-                    <p>${pokemonName}</p>
-                    <p>${pokemonRank}</p>
-                </div>
-                <div class="card-body">
-                    <div class="pokemon-type">
-                        <p>${pokemonTypeOne}</p>
-                    </div>
-                    <img src="${pokemonSprite}" alt="">
-                </div>
-            </div>
-        `;
-}
