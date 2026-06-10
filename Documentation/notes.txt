@@ -1,3 +1,8 @@
 PROBLEM: dialog öffnet sich nicht
 LOOM: https://www.loom.com/share/fb912b0029834be29df0a8d981b2f5cc
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
+
+
+
+https://www.w3schools.com/howto/howto_js_tabs.asp
+

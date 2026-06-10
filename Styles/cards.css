@@ -7,85 +7,142 @@
     gap: 16px;
     justify-content: space-evenly;
     align-items: flex-start;
+}
 
-    .poke-card {
-        width: 312px;
-        height: 200px;
-        background: lightblue;
-        color: white;
-        font-size: 30px;
+/*#region Card Styling*/
+.poke-card {
+    width: 312px;
+    height: 200px;
+    background: lightblue;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    position: relative;
+
+    .card-head {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1;
+
+        h2 {
+            text-transform: capitalize;
+            font-size: 36px;
+        }
+    }
+
+    .pokemon-types {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: flex-start;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        padding: 16px;
-        border-radius: 8px;
-        position: relative;
+        gap: 8px;
 
-        .card-head {
-            width: 100%;
-            height: fit-content;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1;
-
-            h2 {
-                text-transform: capitalize;
-                font-size: 36px;
-            }
+        p {
+            text-transform: capitalize;
+            font-size: 24px;
         }
 
-        .pokemon-types {
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: flex-start;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-
-            p {
-                text-transform: capitalize;
-                font-size: 24px;
-            }
-
-            .pokemon-type {
-                background-color: white;
-                color: black;
-                border-radius: 8px;
-                padding: 4px 8px;
-            }
+        .pokemon-type {
+            background-color: white;
+            color: black;
+            border-radius: 8px;
+            padding: 4px 8px;
         }
-    }
-
-    img {
-        position: absolute;
-        bottom: 4px;
-        right: 0;
-        height: 85%;
-    }
-
-    .grass {
-        background: rgb(89, 192, 89, 0.8);
-    }
-
-    .fire{
-        background: orange;
-    }
-
-    .water{
-        background: lightblue;
-    }
-
-    .bug{
-        background: rgb(136, 76, 76);
-    }
-
-    .normal{
-        background: rgb(193, 188, 188);
-    }
-
-    .poke-card:hover{
-        cursor: pointer;
-        border: 2px solid black;
     }
 }
+
+img {
+    position: absolute;
+    bottom: 4px;
+    right: 0;
+    height: 85%;
+}
+
+.grass {
+    background: rgb(89, 192, 89, 0.8);
+}
+
+.fire {
+    background: orange;
+}
+
+.water {
+    background: lightblue;
+}
+
+.bug {
+    background: rgb(136, 76, 76);
+}
+
+.normal {
+    background: rgb(193, 188, 188);
+}
+
+.poke-card:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
+/*#endregion*/
+
+/*#region Dialog*/
+#dialog-popup {
+    margin: auto;
+    height: 500px;
+    width: 314px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.dialog-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*#region tabs styling copied from w3schools*/
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+/*#endregion Tab Styling*/
+/*#endregion Dialog*/
