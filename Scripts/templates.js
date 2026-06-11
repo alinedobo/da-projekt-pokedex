@@ -1,6 +1,43 @@
 function getTypeTwo(j, result){
     return /*html*/ `
-            <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+            <div class="poke-card-container">
+                <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+                    <div class="card-head">
+                        <h2>${result[j].name}</h2>
+                        <p>#${result[j].id}</p>
+                    </div>
+                    <div class="pokemon-types">
+                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                        <p class="pokemon-type">${result[j].types[1].type.name}</p>
+                    </div>
+                    <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                </div>
+            </div>
+        `;
+}
+
+
+function getNoTypeTwo(j, result){
+    return /*html*/ `
+            <div class="poke-card-container">
+                <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+                    <div class="card-head">
+                        <h2>${result[j].name}</h2>
+                        <p>#${result[j].id}</p>
+                    </div>
+                    <div class="pokemon-types">
+                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                    </div>
+                    <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                </div>
+            </div>
+        `;
+}
+
+
+function getPokemonSummaryTypeTwo(j, result){
+    return /*html*/ `
+            <div class="poke-card ${result[j].types[0].type.name}">
                 <div class="card-head">
                     <h2>${result[j].name}</h2>
                     <p>#${result[j].id}</p>
@@ -15,9 +52,9 @@ function getTypeTwo(j, result){
 }
 
 
-function getNoTypeTwo(j, result){
+function getPokemonSummaryNoTypeTwo(j, result){
     return /*html*/ `
-            <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+            <div class="poke-card ${result[j].types[0].type.name}">
                 <div class="card-head">
                     <h2>${result[j].name}</h2>
                     <p>#${result[j].id}</p>
@@ -30,3 +67,69 @@ function getNoTypeTwo(j, result){
         `;
 }
 
+function getPokemonStats(result, j){
+    return /*html*/ `
+        <div class="stats-container">
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event, 'About')">ABOUT</button>
+                <button class="tablinks" onclick="openTab(event, 'Stats')">STATS</button>
+            </div>
+    
+            <!-- Tab content -->
+            <div id="About" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Species:</th>
+                        <td>${result[j].species.name}</td>
+                    </tr>
+                    <tr>
+                        <th>Weight:</th>
+                        <td>${result[j].weight/10}kg</td>
+                    </tr>
+                    <tr>
+                        <th>Height:</th>
+                        <td>${result[j].height*10}cm</td>
+                    </tr>
+                    <tr>
+                        <th>Abilities:</th>
+                        <td>${getAbilities(result, j)}</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Stats" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>${result[j].stats[0].stat.name}:</th>
+                        <td>${result[j].stats[0].base_stat}</td>
+                    </tr>
+                    <tr>
+                        <th>${result[j].stats[1].stat.name}:</th>
+                        <td>${result[j].stats[1].base_stat}</td>
+                    </tr>
+                    <tr>
+                        <th>${result[j].stats[2].stat.name}:</th>
+                        <td>${result[j].stats[2].base_stat}</td>
+                    </tr>
+                    <tr>
+                        <th>${result[j].stats[3].stat.name}:</th>
+                        <td>${result[j].stats[3].base_stat}</td>
+                    </tr>
+                    <tr>
+                        <th>${result[j].stats[4].stat.name}:</th>
+                        <td>${result[j].stats[4].base_stat}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function getPokemonSlider(){
+    return /*html*/ `
+        <div>
+            <button>PREVIOUS</button>
+            <button>NEXT</button>
+        </div>
+    `;
+}

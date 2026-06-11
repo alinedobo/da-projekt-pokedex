@@ -46,61 +46,25 @@ function renderPokemonSummary(result) {
 
 
 //#region Full Card
-function showFullCard(j) {
-    const dialogRef = document.getElementById("dialog-popup");
-    dialogRef.showModal();
+const dialogRef = document.getElementById("dialog-popup");
 
+function showFullCard(j) {
+    dialogRef.showModal();
+    
     const pokemonSummaryRef = document.getElementById("pokemon-summary");
     if (result[j].types.length > 1) {
-        pokemonSummaryRef.innerHTML = getTypeTwo(j, result);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(j, result);
     } else {
-        pokemonSummaryRef.innerHTML = getNoTypeTwo(j, result);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(j, result);
     }
 
-
     const pokemonStatsRef = document.getElementById("pokemon-stats");
-    pokemonStatsRef.innerHTML = /*html*/ `
-        <!-- Tab links -->
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'About')">ABOUT</button>
-            <button class="tablinks" onclick="openTab(event, 'Stats')">STATS</button>
-        </div>
+    pokemonStatsRef.innerHTML = getPokemonStats(result, j);
 
-        <!-- Tab content -->
-        <div id="About" class="tabcontent">
-            <table>
-                <tr>
-                    <th>Species:</th>
-                    <td>${result[j].species.name}</td>
-                </tr>
-                <tr>
-                    <th>Weight:</th>
-                    <td>${result[j].weight/10}kg</td>
-                </tr>
-                <tr>
-                    <th>Height:</th>
-                    <td>${result[j].height*10}cm</td>
-                </tr>
-                <tr>
-                    <th>Abilities:</th>
-                    <td>${getAbilities(result, j)}</td>
-                </tr>
-            </table>
-        </div>
-        <div id="Stats" class="tabcontent">
-            <table>
-                
-            </table>
-        </div>
-    `;
-    
     const pokemonSliderRef = document.getElementById("pokemon-slider");
-    pokemonSliderRef.innerHTML = /*html*/ `
-        <div>
-            <button>PREVIOUS</button>
-            <button>NEXT</button>
-        </div>
-    `;
+    pokemonSliderRef.innerHTML = getPokemonSlider();
+
+    openTab(event, 'About');
 }
 
 
@@ -134,3 +98,8 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += "active";
 } 
 //#endregion Full Card
+
+
+function closeDialog(){
+    dialogRef.close();
+}

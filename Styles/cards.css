@@ -57,7 +57,7 @@
             padding: 4px 8px;
         }
     }
-    
+
     img {
         position: absolute;
         bottom: 4px;
@@ -65,7 +65,6 @@
         height: 85%;
     }
 }
-
 
 .grass {
     background: rgb(89, 192, 89, 0.8);
@@ -87,9 +86,10 @@
     background: rgb(193, 188, 188);
 }
 
-.poke-card:hover {
+.poke-card-container:hover {
     cursor: pointer;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 /*#endregion*/
 
@@ -99,7 +99,6 @@
     height: 500px;
     width: 314px;
     background: white;
-    border: 2px solid black;
     border-radius: 8px;
 }
 
@@ -111,26 +110,32 @@
 }
 
 /*#region tabs styling copied from w3schools*/
+.stats-container{
+    border-radius: 8px;
+    width: 100%;
+    height: 175px;
+}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    display: flex;
+    gap: 16px;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
     background-color: inherit;
     float: left;
-    border: none;
     outline: none;
     cursor: pointer;
     padding: 8px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    font-weight: bolder;
 }
 
 /* Create an active/current tablink class */
@@ -142,8 +147,6 @@
 .tabcontent {
     display: none;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
 /*#endregion Tab Styling*/
 /*#endregion Dialog*/
