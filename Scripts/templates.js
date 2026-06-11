@@ -67,12 +67,13 @@ function getPokemonSummaryNoTypeTwo(j, result){
         `;
 }
 
+
 function getPokemonStats(result, j){
     return /*html*/ `
         <div class="stats-container">
             <!-- Tab links -->
             <div class="tab">
-                <button class="tablinks active" onclick="openTab(event, 'About')">ABOUT</button>
+                <button class="tablinks" onclick="openTab(event, 'About')">ABOUT</button>
                 <button class="tablinks" onclick="openTab(event, 'Stats')">STATS</button>
             </div>
     
@@ -81,43 +82,43 @@ function getPokemonStats(result, j){
                 <table>
                     <tr>
                         <th>Species:</th>
-                        <td>${result[j].species.name}</td>
+                        <td class="poke-about-facts">${result[j].species.name}</td>
                     </tr>
                     <tr>
                         <th>Weight:</th>
-                        <td>${result[j].weight/10}kg</td>
+                        <td class="poke-about-facts">${result[j].weight/10}kg</td>
                     </tr>
                     <tr>
                         <th>Height:</th>
-                        <td>${result[j].height*10}cm</td>
+                        <td class="poke-about-facts">${result[j].height*10}cm</td>
                     </tr>
                     <tr>
                         <th>Abilities:</th>
-                        <td>${getAbilities(result, j)}</td>
+                        <td class="poke-about-facts">${getAbilities(result, j)}</td>
                     </tr>
                 </table>
             </div>
             <div id="Stats" class="tabcontent">
                 <table>
                     <tr>
-                        <th>${result[j].stats[0].stat.name}:</th>
-                        <td>${result[j].stats[0].base_stat}</td>
+                        <th>HP:</th>
+                        <td>${result[j].stats[0].base_stat}/100</td>
                     </tr>
                     <tr>
-                        <th>${result[j].stats[1].stat.name}:</th>
-                        <td>${result[j].stats[1].base_stat}</td>
+                        <th>Attack:</th>
+                        <td>${result[j].stats[1].base_stat}/100</td>
                     </tr>
                     <tr>
-                        <th>${result[j].stats[2].stat.name}:</th>
-                        <td>${result[j].stats[2].base_stat}</td>
+                        <th>Defense:</th>
+                        <td>${result[j].stats[2].base_stat}/100</td>
                     </tr>
                     <tr>
-                        <th>${result[j].stats[3].stat.name}:</th>
-                        <td>${result[j].stats[3].base_stat}</td>
+                        <th>Special Attack:</th>
+                        <td>${result[j].stats[3].base_stat}/100</td>
                     </tr>
                     <tr>
-                        <th>${result[j].stats[4].stat.name}:</th>
-                        <td>${result[j].stats[4].base_stat}</td>
+                        <th>Special Defense:</th>
+                        <td>${result[j].stats[4].base_stat}/100</td>
                     </tr>
                 </table>
             </div>
@@ -125,11 +126,10 @@ function getPokemonStats(result, j){
     `;
 }
 
+
 function getPokemonSlider(){
     return /*html*/ `
-        <div>
-            <button>PREVIOUS</button>
-            <button>NEXT</button>
-        </div>
+        <button><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
+        <button><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
     `;
 }
