@@ -57,14 +57,15 @@
             padding: 4px 8px;
         }
     }
+    
+    img {
+        position: absolute;
+        bottom: 4px;
+        right: 0;
+        height: 85%;
+    }
 }
 
-img {
-    position: absolute;
-    bottom: 4px;
-    right: 0;
-    height: 85%;
-}
 
 .grass {
     background: rgb(89, 192, 89, 0.8);

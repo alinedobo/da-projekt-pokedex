@@ -29,3 +29,4 @@ function getNoTypeTwo(j, result){
             </div>
         `;
 }
+
