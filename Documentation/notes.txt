@@ -4,5 +4,14 @@ URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 
 
+PROBLEM: Erster Tab initial anzeigen lassen in der Card
+LOOM: https://www.loom.com/share/76e1cf9718984ddfb82605dd4619f553
+URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
+
+
+
+
 https://www.w3schools.com/howto/howto_js_tabs.asp
+
+
 
