@@ -5,13 +5,13 @@ function init() {
 }
 
 const result = [];
+let offsetVar = 0;
 let currentPokemon = [];
 
 //#region Get Data
 async function getPokemon() {
-    let response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0",
-    );
+    console.log(offsetVar);
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++) {
@@ -29,6 +29,7 @@ function renderCards(result) {
     renderPokemonSummary(result);
 }
 
+
 function renderPokemonSummary(result) {
     const cardWrapperRef = document.getElementById("card-wrapper");
     cardWrapperRef.innerHTML = "";
@@ -45,6 +46,7 @@ function renderPokemonSummary(result) {
 
 //#region Full Card
 const dialogRef = document.getElementById("dialog-popup");
+
 
 function showFullCard(j) {
     dialogRef.showModal();
@@ -65,6 +67,7 @@ function showFullCard(j) {
     openTab(event, "About");
 }
 
+
 function getAbilities(result, j) {
     const pokemonAbilities = [];
     for (let i = 0; i < result[j].abilities.length; i++) {
@@ -75,6 +78,7 @@ function getAbilities(result, j) {
     stringResult = pokemonAbilities.join(", ", pokemonAbilities);
     return stringResult;
 }
+
 
 function openTab(evt, tabName) {
     // Declare all variables
@@ -95,11 +99,7 @@ function openTab(evt, tabName) {
 }
 //#endregion Full Card
 
-function closeDialog() {
-    dialogRef.close();
-}
-
-//#region Move between Cards - does not work yet
+//#region Move between Cards
 function goToPreviousCard(j) {
     console.log("goToPreviousCard function triggered");
     console.log(result.length);
@@ -125,26 +125,30 @@ function goToNextCard(j) {
 //#endregion Move between Cards
 
 //#region Search for Pokemon - does not work yet
-function checkSearchInput() {
-    const searchInputRef = document.getElementById("search-bar-input");
-    let searchInput = searchInputRef.value;
+const searchBarInputRef = document.getElementById("search-bar-input");
+const searchButtonRef = document.getElementById("search-button");
+const MIN_CHARS = 3;
 
-    searchInputRef.addEventListener("keydown", function (event) {
-        console.log("onChange function triggered");
-        if (searchInput.length > 1) {
-            searchInput = searchInputRef.value;
-            console.log(searchInput);
-        }
-    });
+// Listen for input events (typing, pasting, etc.)
+searchBarInputRef.addEventListener("input", () => {
+const inputLength = searchBarInputRef.value.trim().length;
+// Enable button if input has at least MIN_CHARS
+searchButtonRef.disabled = inputLength < MIN_CHARS;
+});
+
+
+function filterPokemon(){
+    console.log("filter pokemon works");
 }
 
-/* function filterPokemon(pokemonName){
-    for (let i = 0; i < result.length; i++){
-        if(result[i].name.includes(pokemonName)){
-            currentPokemon.push(result[i].name);
-            console.log(currentPokemon);
-        }
-    }
-    renderPokemonSummary(currentPokemon);
-} */
-//#endregion Search for Pokemon - does not work yet
+//#endregion Search for Pokemon
+
+//#region Load more Cards
+
+
+
+//#endregion Load more Cards
+
+function closeDialog() {
+    dialogRef.close();
+}

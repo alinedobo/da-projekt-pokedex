@@ -10,11 +10,12 @@ function getTypeTwo(j, result) {
                         <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
                         <p class="pokemon-type">${result[j].types[1].type.name}</p>
                     </div>
-                    <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
                 </div>
             </div>
         `;
 }
+
 
 function getNoTypeTwo(j, result) {
     return /*html*/ `
@@ -27,11 +28,12 @@ function getNoTypeTwo(j, result) {
                     <div class="pokemon-types">
                         <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
                     </div>
-                    <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
                 </div>
             </div>
         `;
 }
+
 
 function getPokemonSummaryTypeTwo(j, result) {
     return /*html*/ `
@@ -44,10 +46,11 @@ function getPokemonSummaryTypeTwo(j, result) {
                     <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
                     <p class="pokemon-type">${result[j].types[1].type.name}</p>
                 </div>
-                <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }
+
 
 function getPokemonSummaryNoTypeTwo(j, result) {
     return /*html*/ `
@@ -59,18 +62,19 @@ function getPokemonSummaryNoTypeTwo(j, result) {
                 <div class="pokemon-types">
                     <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
                 </div>
-                <img src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }
+
 
 function getPokemonStats(result, j) {
     return /*html*/ `
         <div class="stats-container">
             <!-- Tab links -->
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'About')">ABOUT</button>
-                <button class="tablinks" onclick="openTab(event, 'Stats')">STATS</button>
+                <button data-id="card" class="tablinks" onclick="openTab(event, 'About')">ABOUT</button>
+                <button data-id="card" class="tablinks" onclick="openTab(event, 'Stats')">STATS</button>
             </div>
     
             <!-- Tab content -->
@@ -122,9 +126,10 @@ function getPokemonStats(result, j) {
     `;
 }
 
+
 function getPokemonSlider(j) {
     return /*html*/ `
-        <button onclick="goToPreviousCard(${j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
-        <button onclick="goToNextCard(${j})"><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
+        <button data-id="card" data-id="prev-button" onclick="goToPreviousCard(${j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
+        <button data-id="card" data-id="next-button" onclick="goToNextCard(${j})"><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
     `;
 }
