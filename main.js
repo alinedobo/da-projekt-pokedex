@@ -124,19 +124,19 @@ function goToNextCard(j) {
 }
 //#endregion Move between Cards
 
-//#region Search for Pokemon
-    //#region Disable and enable search button
-    const searchBarInputRef = document.getElementById("search-bar-input");
-    const searchButtonRef = document.getElementById("search-button");
-    const MIN_CHARS = 3;
-    let searchInput = searchBarInputRef.value;
-    // Listen for input events (typing, pasting, etc.)
-    searchBarInputRef.addEventListener("input", () => {
-        const inputLength = searchBarInputRef.value.trim().length;
-        // Enable button if input has at least MIN_CHARS
-        searchButtonRef.disabled = inputLength < MIN_CHARS;
-    });
-    //#endregion Disable and enable search button
+//#region Search for Pokemon - MISSING ERROR MESSAGE
+//Disable and enable search button
+const searchBarInputRef = document.getElementById("search-bar-input");
+const searchButtonRef = document.getElementById("search-button");
+const MIN_CHARS = 3;
+let searchInput = searchBarInputRef.value;
+// Listen for input events (typing, pasting, etc.)
+searchBarInputRef.addEventListener("input", () => {
+    const inputLength = searchBarInputRef.value.trim().length;
+    // Enable button if input has at least MIN_CHARS
+    searchButtonRef.disabled = inputLength < MIN_CHARS;
+});
+
 
 function filterPokemon(){
     currentPokemon = result.filter(isNameIncluded);
