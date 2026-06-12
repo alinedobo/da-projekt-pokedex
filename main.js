@@ -5,13 +5,12 @@ function init() {
 }
 
 const result = [];
-let offsetVar;
+let offsetVar = 0;
 let currentPokemon = [];
 
 //#region Get Data
-async function getPokemon() {
-    offsetVar = 3;
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}');
+async function getPokemon(offsetVar) {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}`);
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++) {
@@ -151,10 +150,11 @@ function isNameIncluded(banane){
 }
 //#endregion Search for Pokemon
 
-//#region Load more Cards - does not work yet
-
-
-
+//#region Load more Cards
+function addMorePokemon(){
+    offsetVar = (offsetVar + 30);
+    getPokemon(offsetVar);
+}
 //#endregion Load more Cards
 
 function closeDialog() {
