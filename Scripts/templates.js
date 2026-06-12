@@ -127,9 +127,9 @@ function getPokemonStats(result, j){
 }
 
 
-function getPokemonSlider(){
+function getPokemonSlider(result, j){
     return /*html*/ `
-        <button><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
+        <button onclick="goToPreviousCard(${result, j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
         <button><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
     `;
 }
