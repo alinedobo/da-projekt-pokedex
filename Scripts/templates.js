@@ -1,4 +1,4 @@
-function getTypeTwo(j, result){
+function getTypeTwo(j, result) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
@@ -16,8 +16,7 @@ function getTypeTwo(j, result){
         `;
 }
 
-
-function getNoTypeTwo(j, result){
+function getNoTypeTwo(j, result) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
@@ -34,8 +33,7 @@ function getNoTypeTwo(j, result){
         `;
 }
 
-
-function getPokemonSummaryTypeTwo(j, result){
+function getPokemonSummaryTypeTwo(j, result) {
     return /*html*/ `
             <div class="poke-card ${result[j].types[0].type.name}">
                 <div class="card-head">
@@ -51,8 +49,7 @@ function getPokemonSummaryTypeTwo(j, result){
         `;
 }
 
-
-function getPokemonSummaryNoTypeTwo(j, result){
+function getPokemonSummaryNoTypeTwo(j, result) {
     return /*html*/ `
             <div class="poke-card ${result[j].types[0].type.name}">
                 <div class="card-head">
@@ -67,8 +64,7 @@ function getPokemonSummaryNoTypeTwo(j, result){
         `;
 }
 
-
-function getPokemonStats(result, j){
+function getPokemonStats(result, j) {
     return /*html*/ `
         <div class="stats-container">
             <!-- Tab links -->
@@ -86,11 +82,11 @@ function getPokemonStats(result, j){
                     </tr>
                     <tr>
                         <th>Weight:</th>
-                        <td class="poke-about-facts">${result[j].weight/10}kg</td>
+                        <td class="poke-about-facts">${result[j].weight / 10}kg</td>
                     </tr>
                     <tr>
                         <th>Height:</th>
-                        <td class="poke-about-facts">${result[j].height*10}cm</td>
+                        <td class="poke-about-facts">${result[j].height * 10}cm</td>
                     </tr>
                     <tr>
                         <th>Abilities:</th>
@@ -126,10 +122,9 @@ function getPokemonStats(result, j){
     `;
 }
 
-
-function getPokemonSlider(result, j){
+function getPokemonSlider(j) {
     return /*html*/ `
-        <button onclick="goToPreviousCard(${result, j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
-        <button><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
+        <button onclick="goToPreviousCard(${j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
+        <button onclick="goToNextCard(${j})"><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
     `;
 }
