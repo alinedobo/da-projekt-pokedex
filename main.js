@@ -141,6 +141,7 @@ function goToNextCard(j) {
 function filterPokemon(){
     currentPokemon = result.filter(isNameIncluded);
     renderPokemonSummary(currentPokemon);
+    searchBarInputRef.value = "";
 }
 
 
