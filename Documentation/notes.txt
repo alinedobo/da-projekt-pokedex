@@ -4,8 +4,8 @@ URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 
 
-PROBLEM: Event listener für search bar
-LOOM: https://www.loom.com/share/05960e6f9fd2494ca1c8bf095a5def98
+PROBLEM: fetch url mit offset als variable
+LOOM: https://www.loom.com/share/d9ef8467c2a04dc0b7422ce28fac8730
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 

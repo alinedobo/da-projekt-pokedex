@@ -5,13 +5,13 @@ function init() {
 }
 
 const result = [];
-let offsetVar = 0;
+let offsetVar;
 let currentPokemon = [];
 
 //#region Get Data
 async function getPokemon() {
-    console.log(offsetVar);
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
+    offsetVar = 3;
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}');
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++) {
@@ -124,26 +124,33 @@ function goToNextCard(j) {
 }
 //#endregion Move between Cards
 
-//#region Search for Pokemon - does not work yet
-const searchBarInputRef = document.getElementById("search-bar-input");
-const searchButtonRef = document.getElementById("search-button");
-const MIN_CHARS = 3;
-
-// Listen for input events (typing, pasting, etc.)
-searchBarInputRef.addEventListener("input", () => {
-const inputLength = searchBarInputRef.value.trim().length;
-// Enable button if input has at least MIN_CHARS
-searchButtonRef.disabled = inputLength < MIN_CHARS;
-});
-
+//#region Search for Pokemon
+    //#region Disable and enable search button
+    const searchBarInputRef = document.getElementById("search-bar-input");
+    const searchButtonRef = document.getElementById("search-button");
+    const MIN_CHARS = 3;
+    let searchInput = searchBarInputRef.value;
+    // Listen for input events (typing, pasting, etc.)
+    searchBarInputRef.addEventListener("input", () => {
+        const inputLength = searchBarInputRef.value.trim().length;
+        // Enable button if input has at least MIN_CHARS
+        searchButtonRef.disabled = inputLength < MIN_CHARS;
+    });
+    //#endregion Disable and enable search button
 
 function filterPokemon(){
-    console.log("filter pokemon works");
+    currentPokemon = result.filter(isNameIncluded);
+    renderPokemonSummary(currentPokemon);
 }
 
+
+function isNameIncluded(banane){
+    searchInput = searchBarInputRef.value;
+    return banane.name.includes(searchInput);
+}
 //#endregion Search for Pokemon
 
-//#region Load more Cards
+//#region Load more Cards - does not work yet
 
 
 
@@ -152,3 +159,5 @@ function filterPokemon(){
 function closeDialog() {
     dialogRef.close();
 }
+
+
