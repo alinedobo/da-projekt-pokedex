@@ -37,16 +37,18 @@ function getNoTypeTwo(j, result) {
 
 function getPokemonSummaryTypeTwo(j, result) {
     return /*html*/ `
-            <div class="poke-card ${result[j].types[0].type.name}">
-                <div class="card-head">
-                    <h2>${result[j].name}</h2>
-                    <p>#${result[j].id}</p>
+            <div class="poke-card-container">
+                <div class="poke-card ${result[j].types[0].type.name}">
+                    <div class="card-head">
+                        <h2>${result[j].name}</h2>
+                        <p>#${result[j].id}</p>
+                    </div>
+                    <div class="pokemon-types">
+                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                        <p class="pokemon-type">${result[j].types[1].type.name}</p>
+                    </div>
+                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
                 </div>
-                <div class="pokemon-types">
-                    <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
-                    <p class="pokemon-type">${result[j].types[1].type.name}</p>
-                </div>
-                <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }
@@ -54,15 +56,17 @@ function getPokemonSummaryTypeTwo(j, result) {
 
 function getPokemonSummaryNoTypeTwo(j, result) {
     return /*html*/ `
-            <div class="poke-card ${result[j].types[0].type.name}">
-                <div class="card-head">
-                    <h2>${result[j].name}</h2>
-                    <p>#${result[j].id}</p>
+            <div class="poke-card-container">
+                <div class="poke-card ${result[j].types[0].type.name}">
+                    <div class="card-head">
+                        <h2>${result[j].name}</h2>
+                        <p>#${result[j].id}</p>
+                    </div>
+                    <div class="pokemon-types">
+                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                    </div>
+                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
                 </div>
-                <div class="pokemon-types">
-                    <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
-                </div>
-                <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
             </div>
         `;
 }

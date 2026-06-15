@@ -103,3 +103,10 @@ html: <button data-id="search-button"> Suchen </button>
             - [x] man soll mindestens 3 Buchstaben eingeben, bevor via Button gesucht werden kann  
             - [x] werden keine passenden Pokemon gefunden, zeige eine entsprechende Meldung an
 - [x] Online gegenchecken -> FTP
+
+FEEDBACK 1:
+[x] When hover, other cards should not move
+[ ] Feedback when user clicks on "search" while disabled
+[ ] After filtering, full card still uses old array
+[x] Clear console -> should be empty
+[x] Error 404 for text.js

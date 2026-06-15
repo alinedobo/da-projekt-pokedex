@@ -1,5 +1,3 @@
-console.log("pokepoke");
-
 function init() {
     disableLoadMoreButton();
     hideWrapperShowLoader();
@@ -77,7 +75,6 @@ function getAbilities(result, j) {
         let pokemonAbility = result[j].abilities[i].ability.name;
         pokemonAbilities.push(pokemonAbility);
     }
-    console.log(pokemonAbilities);
     stringResult = pokemonAbilities.join(", ", pokemonAbilities);
     return stringResult;
 }
@@ -114,9 +111,6 @@ dialogRef.addEventListener('click', (event) => {
 
 
 function goToPreviousCard(j) {
-    console.log("goToPreviousCard function triggered");
-    console.log(result.length);
-
     if (j === 0) {
         showFullCard(result.length - 1);
     } else {
@@ -126,9 +120,6 @@ function goToPreviousCard(j) {
 
 
 function goToNextCard(j) {
-    console.log("goToNextCard function triggered");
-    console.log(result.length);
-
     if (j === result.length - 1) {
         showFullCard(0);
     } else {
@@ -154,7 +145,6 @@ searchBarInputRef.addEventListener("input", () => {
 function filterPokemon(){
     currentPokemon = result.filter(isNameIncluded);
     if(currentPokemon.length < 1 || currentPokemon == undefined){
-        console.log("not found");
         openErrorMessage();
     } else{
         renderPokemonSummary(currentPokemon);
@@ -193,14 +183,12 @@ function addMorePokemon(){
 function hideWrapperShowLoader(){
     document.querySelector("#card-wrapper").style.visibility = "hidden";
     document.querySelector("#loader").style.visibility = "visible";
-    console.log("wrapper hidden loader shown");
 }
 
 
 function showWrapperHideLoader(){
     document.querySelector("#loader").style.display = "none";
     document.querySelector("#card-wrapper").style.visibility = "visible";
-    console.log("loader hidden wrapper shown");
 }
 
 
