@@ -12,8 +12,6 @@ let currentPokemon = [];
 
 //#region Get Data
 async function getPokemon(offsetVar) {
-    hideWrapperShowLoader();
-    
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}`);
     let responseFromJson = await response.json();
 
