@@ -110,3 +110,4 @@ FEEDBACK 1:
 [ ] After filtering, full card still uses old array
 [x] Clear console -> should be empty
 [x] Error 404 for text.js
+[x] Loader doesn't show

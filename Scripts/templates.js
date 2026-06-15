@@ -1,4 +1,4 @@
-function getTypeTwo(j, result) {
+function getTypeTwo(j) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
@@ -17,7 +17,7 @@ function getTypeTwo(j, result) {
 }
 
 
-function getNoTypeTwo(j, result) {
+function getNoTypeTwo(j) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
@@ -35,7 +35,7 @@ function getNoTypeTwo(j, result) {
 }
 
 
-function getPokemonSummaryTypeTwo(j, result) {
+function getPokemonSummaryTypeTwo(j) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}">
@@ -54,7 +54,7 @@ function getPokemonSummaryTypeTwo(j, result) {
 }
 
 
-function getPokemonSummaryNoTypeTwo(j, result) {
+function getPokemonSummaryNoTypeTwo(j) {
     return /*html*/ `
             <div class="poke-card-container">
                 <div class="poke-card ${result[j].types[0].type.name}">
@@ -72,7 +72,7 @@ function getPokemonSummaryNoTypeTwo(j, result) {
 }
 
 
-function getPokemonStats(result, j) {
+function getPokemonStats(j) {
     return /*html*/ `
         <div class="stats-container">
             <!-- Tab links -->
@@ -98,7 +98,7 @@ function getPokemonStats(result, j) {
                     </tr>
                     <tr>
                         <th>Abilities:</th>
-                        <td class="poke-about-facts">${getAbilities(result, j)}</td>
+                        <td class="poke-about-facts">${getAbilities(j)}</td>
                     </tr>
                 </table>
             </div>

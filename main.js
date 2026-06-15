@@ -1,12 +1,13 @@
-function init() {
-    disableLoadMoreButton();
-    hideWrapperShowLoader();
-    getPokemon();
-}
-
 const result = [];
 let offsetVar = 0;
 let currentPokemon = [];
+
+function init() {
+    disableLoadMoreButton();
+    showLoadingScreen();
+    getPokemon();
+}
+
 
 //#region Get Data
 async function getPokemon(offsetVar) {
@@ -19,27 +20,28 @@ async function getPokemon(offsetVar) {
         result.push(singlePokemonData);
     }
 
-    renderCards(result);
+    renderCards();
 }
 //#endregion Get Data
 
 //#region Initial Rendering
-function renderCards(result) {
-    renderPokemonSummary(result);
-    showWrapperHideLoader();
+function renderCards() {
+    renderPokemonSummary();
+    hideLoadingScreen();
+    hideMiniLoadingScreen();
     enableLoadMoreButton();
 }
 
 
-function renderPokemonSummary(result) {
+function renderPokemonSummary() {
     const cardWrapperRef = document.getElementById("card-wrapper");
     cardWrapperRef.innerHTML = "";
 
     for (let j = 0; j < result.length; j++) {
         if (result[j].types.length > 1) {
-            cardWrapperRef.innerHTML += getTypeTwo(j, result);
+            cardWrapperRef.innerHTML += getTypeTwo(j);
         } else {
-            cardWrapperRef.innerHTML += getNoTypeTwo(j, result);
+            cardWrapperRef.innerHTML += getNoTypeTwo(j);
         }
     }
 }
@@ -54,13 +56,13 @@ function showFullCard(j) {
 
     const pokemonSummaryRef = document.getElementById("pokemon-summary");
     if (result[j].types.length > 1) {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(j, result);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(j);
     } else {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(j, result);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(j);
     }
 
     const pokemonStatsRef = document.getElementById("pokemon-stats");
-    pokemonStatsRef.innerHTML = getPokemonStats(result, j);
+    pokemonStatsRef.innerHTML = getPokemonStats(j);
 
     const pokemonSliderRef = document.getElementById("pokemon-slider");
     pokemonSliderRef.innerHTML = getPokemonSlider(j);
@@ -69,7 +71,7 @@ function showFullCard(j) {
 }
 
 
-function getAbilities(result, j) {
+function getAbilities(j) {
     const pokemonAbilities = [];
     for (let i = 0; i < result[j].abilities.length; i++) {
         let pokemonAbility = result[j].abilities[i].ability.name;
@@ -102,6 +104,7 @@ function openTab(evt, tabName) {
 function closeDialog() {
     dialogRef.close();
 }
+
 
 dialogRef.addEventListener('click', (event) => {
     if (event.target.id === "dialog-popup") {
@@ -172,7 +175,7 @@ function closeErrorMessage(){
 
 //#region Load more Cards
 function addMorePokemon(){
-    hideWrapperShowLoader();
+    showMiniLoadingScreen();
     disableLoadMoreButton();
     offsetVar = (offsetVar + 30);
     getPokemon(offsetVar);
@@ -180,15 +183,22 @@ function addMorePokemon(){
 //#endregion Load more Cards
 
 //#region Loader & Button
-function hideWrapperShowLoader(){
-    document.querySelector("#card-wrapper").style.visibility = "hidden";
-    document.querySelector("#loader").style.visibility = "visible";
+function showLoadingScreen(){;
+    document.querySelector("#loading-screen").style.visibility = "visible";
 }
 
 
-function showWrapperHideLoader(){
-    document.querySelector("#loader").style.display = "none";
-    document.querySelector("#card-wrapper").style.visibility = "visible";
+function hideLoadingScreen(){
+    document.querySelector("#loading-screen").style.visibility = "hidden";
+}
+
+
+function showMiniLoadingScreen(){;
+    document.querySelector("#mini-loading-screen").style.display = "initial";
+}
+
+function hideMiniLoadingScreen(){
+    document.querySelector("#mini-loading-screen").style.display = "none";
 }
 
 
