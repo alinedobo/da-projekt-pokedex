@@ -102,4 +102,4 @@ html: <button data-id="search-button"> Suchen </button>
       - [x] Suchleiste  
             - [x] man soll mindestens 3 Buchstaben eingeben, bevor via Button gesucht werden kann  
             - [x] werden keine passenden Pokemon gefunden, zeige eine entsprechende Meldung an
-- [ ] Online gegenchecken -> FTP
+- [x] Online gegenchecken -> FTP

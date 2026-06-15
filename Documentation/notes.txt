@@ -1,5 +1,7 @@
-PROBLEM: Event Listener Karte schliessen wenn click ausserhalb
-LOOM: https://www.loom.com/share/cb886592c9174c5da6bb1c7c966060a6
+
+
+PROBLEM: CurrentPokemon Array weiter geben an fullPicture Funktion
+LOOM: https://www.loom.com/share/6ce54cecab5244f3955fab28f37405d0
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 
@@ -7,6 +9,3 @@ URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 
 
-
-
-https://www.w3schools.com/howto/howto_js_tabs.asp
