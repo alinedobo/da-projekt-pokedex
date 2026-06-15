@@ -1,12 +1,10 @@
-PROBLEM: Abilities in der Card auflisten
-LOOM: https://www.loom.com/share/b322b035d1194ba8b2019553639f1a3e
+PROBLEM: Event Listener Karte schliessen wenn click ausserhalb
+LOOM: https://www.loom.com/share/cb886592c9174c5da6bb1c7c966060a6
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 
 
-PROBLEM: fetch url mit offset als variable
-LOOM: https://www.loom.com/share/d9ef8467c2a04dc0b7422ce28fac8730
-URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
+
 
 
 

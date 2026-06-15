@@ -16,6 +16,12 @@
     button:hover {
         cursor: pointer;
     }
+
+    button:disabled {
+        background: grey;
+        color: black;
+        border: none;
+    }
 }
 
 html {
@@ -79,7 +85,7 @@ header {
         gap: 8px;
         align-items: center;
 
-        button{
+        button {
             border: 2px solid blue;
             border-radius: 4px;
             color: red;
@@ -87,7 +93,7 @@ header {
             padding: 4px 8px;
         }
 
-        button:disabled{
+        button:disabled {
             background: grey;
             color: black;
             border: none;
@@ -119,13 +125,16 @@ main {
         gap: 30px;
     }
 
-    #loading{
+    #loading {
         width: 100%;
-        height: 100px;
+        height: fit-content;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 50px;
 
-        button{
+        button {
             align-self: center;
             height: 80px;
             width: 200px;
@@ -136,6 +145,64 @@ main {
             font-size: 24px;
             font-weight: bold;
         }
+
+        button:disabled {
+            background: grey;
+            color: black;
+            border: none;
+        }
+
+        /*#region Loader*/
+        #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /*#endregion Loader*/
+    }
+
+    #error-message {
+        margin: auto;
+        height: 125px;
+        width: 250px;
+
+        #error-message-container {
+            background: rgb(255, 217, 0);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            border: 2px solid blue;
+            border-radius: 8px;
+            color: red;
+            font-weight: bold;
+
+            #close-error-message-button {
+                align-self: center;
+                height: 30px;
+                width: 80px;
+                border: 2px solid blue;
+                background: rgb(255, 217, 0);
+                color: red;
+                border-radius: 4px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    #error-message[open]::backdrop {
+        background-color: rgb(6, 23, 30, 0.5);
     }
 }
 /*#endregion Main Content*/

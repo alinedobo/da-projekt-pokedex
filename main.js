@@ -1,6 +1,8 @@
 console.log("pokepoke");
 
 function init() {
+    disableLoadMoreButton();
+    hideWrapperShowLoader();
     getPokemon();
 }
 
@@ -10,6 +12,8 @@ let currentPokemon = [];
 
 //#region Get Data
 async function getPokemon(offsetVar) {
+    hideWrapperShowLoader();
+    
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}`);
     let responseFromJson = await response.json();
 
@@ -26,6 +30,8 @@ async function getPokemon(offsetVar) {
 //#region Initial Rendering
 function renderCards(result) {
     renderPokemonSummary(result);
+    showWrapperHideLoader();
+    enableLoadMoreButton();
 }
 
 
@@ -96,9 +102,19 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     /* evt.currentTarget.className += " active"; */
 }
-//#endregion Full Card
 
-//#region Move between Cards
+
+function closeDialog() {
+    dialogRef.close();
+}
+
+dialogRef.addEventListener('click', (event) => {
+    if (event.target.id === "dialog-popup") {
+        dialogRef.close();
+    }
+});
+
+
 function goToPreviousCard(j) {
     console.log("goToPreviousCard function triggered");
     console.log(result.length);
@@ -121,9 +137,9 @@ function goToNextCard(j) {
         showFullCard(j + 1);
     }
 }
-//#endregion Move between Cards
+//#endregion Full Card
 
-//#region Search for Pokemon - MISSING ERROR MESSAGE
+//#region Search for Pokemon
 //Disable and enable search button
 const searchBarInputRef = document.getElementById("search-bar-input");
 const searchButtonRef = document.getElementById("search-button");
@@ -139,7 +155,12 @@ searchBarInputRef.addEventListener("input", () => {
 
 function filterPokemon(){
     currentPokemon = result.filter(isNameIncluded);
-    renderPokemonSummary(currentPokemon);
+    if(currentPokemon.length < 1 || currentPokemon == undefined){
+        console.log("not found");
+        openErrorMessage();
+    } else{
+        renderPokemonSummary(currentPokemon);
+    }
     searchBarInputRef.value = "";
 }
 
@@ -148,17 +169,49 @@ function isNameIncluded(banane){
     searchInput = searchBarInputRef.value;
     return banane.name.includes(searchInput);
 }
+
+
+const errorMessageRef = document.getElementById("error-message");
+function openErrorMessage(){
+    errorMessageRef.showModal();
+}
+
+
+function closeErrorMessage(){
+    errorMessageRef.close();
+}
 //#endregion Search for Pokemon
 
 //#region Load more Cards
 function addMorePokemon(){
+    hideWrapperShowLoader();
+    disableLoadMoreButton();
     offsetVar = (offsetVar + 30);
     getPokemon(offsetVar);
 }
 //#endregion Load more Cards
 
-function closeDialog() {
-    dialogRef.close();
+//#region Loader & Button
+function hideWrapperShowLoader(){
+    document.querySelector("#card-wrapper").style.visibility = "hidden";
+    document.querySelector("#loader").style.visibility = "visible";
+    console.log("wrapper hidden loader shown");
 }
 
 
+function showWrapperHideLoader(){
+    document.querySelector("#loader").style.display = "none";
+    document.querySelector("#card-wrapper").style.visibility = "visible";
+    console.log("loader hidden wrapper shown");
+}
+
+
+function disableLoadMoreButton(){
+    document.getElementById("load-more-button").disabled = true;
+}
+
+
+function enableLoadMoreButton(){
+    document.getElementById("load-more-button").disabled = false;
+} 
+//#endregion Loader
