@@ -106,7 +106,7 @@ html: <button data-id="search-button"> Suchen </button>
 
 FEEDBACK 1:
 [x] When hover, other cards should not move
-[ ] Feedback when user clicks on "search" while disabled
+[x] Feedback when user clicks on "search" while disabled
 [ ] After filtering, full card still uses old array
 [x] Clear console -> should be empty
 [x] Error 404 for text.js

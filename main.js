@@ -142,7 +142,16 @@ let searchInput = searchBarInputRef.value;
 searchBarInputRef.addEventListener("input", () => {
     const inputLength = searchBarInputRef.value.trim().length;
     // Enable button if input has at least MIN_CHARS
-    searchButtonRef.disabled = inputLength < MIN_CHARS;
+    if(inputLength === 0){
+        document.getElementById("more-letters").style.visibility = "hidden";
+    } else if(inputLength > 0 && inputLength < MIN_CHARS){
+        console.log("needs more letters");
+        searchButtonRef.disabled = true;
+        document.getElementById("more-letters").style.visibility = "visible";
+    } else{
+        searchButtonRef.disabled = false;
+        document.getElementById("more-letters").style.visibility = "hidden";
+    }
 });
 
 

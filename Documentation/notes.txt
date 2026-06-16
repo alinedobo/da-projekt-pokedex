@@ -1,7 +1,7 @@
 
 
-PROBLEM: CurrentPokemon Array weiter geben an fullPicture Funktion
-LOOM: https://www.loom.com/share/6ce54cecab5244f3955fab28f37405d0
+PROBLEM: Uncaught SyntaxError
+LOOM: https://www.loom.com/share/5c2d7643e937464780af45a114755534
 URL: alinedobo.developerakademie.net/da-projekt-pokedex/index.html
 
 

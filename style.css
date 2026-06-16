@@ -43,6 +43,7 @@ footer {
     background: red;
     display: flex;
     justify-content: center;
+    z-index: 1;
 
     .content-headooter {
         width: 100%;
