@@ -1,4 +1,4 @@
-const result = [];
+const initialPokemon = [];
 let offsetVar = 0;
 let currentPokemon = [];
 
@@ -10,38 +10,38 @@ function init() {
 
 
 //#region Get Data
-async function getPokemon(offsetVar) {
+async function getPokemon(offset) {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=${offsetVar}`);
     let responseFromJson = await response.json();
 
     for (let i = 0; i < responseFromJson.results.length; i++) {
         let response = await fetch(responseFromJson.results[i].url);
         let singlePokemonData = await response.json();
-        result.push(singlePokemonData);
+        initialPokemon.push(singlePokemonData);
     }
 
-    renderCards();
+    renderCards(initialPokemon);
 }
 //#endregion Get Data
 
 //#region Initial Rendering
 function renderCards() {
-    renderPokemonSummary();
+    renderPokemonSummary(initialPokemon);
     hideLoadingScreen();
     hideMiniLoadingScreen();
     enableLoadMoreButton();
 }
 
 
-function renderPokemonSummary() {
+function renderPokemonSummary(array) {
     const cardWrapperRef = document.getElementById("card-wrapper");
     cardWrapperRef.innerHTML = "";
 
-    for (let j = 0; j < result.length; j++) {
-        if (result[j].types.length > 1) {
-            cardWrapperRef.innerHTML += getTypeTwo(j);
+    for (let j = 0; j < array.length; j++) {
+        if (array[j].types.length > 1) {
+            cardWrapperRef.innerHTML += getTypeTwo(array, j);
         } else {
-            cardWrapperRef.innerHTML += getNoTypeTwo(j);
+            cardWrapperRef.innerHTML += getNoTypeTwo(array, j);
         }
     }
 }
@@ -51,30 +51,31 @@ function renderPokemonSummary() {
 const dialogRef = document.getElementById("dialog-popup");
 
 
-function showFullCard(j) {
+function showFullCard(array, j) {
+    console.log("show full card is triggered");
     dialogRef.showModal();
 
     const pokemonSummaryRef = document.getElementById("pokemon-summary");
-    if (result[j].types.length > 1) {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(j);
+    if (array[j].types.length > 1) {
+        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(array, j);
     } else {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(j);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(array, j);
     }
 
     const pokemonStatsRef = document.getElementById("pokemon-stats");
-    pokemonStatsRef.innerHTML = getPokemonStats(j);
+    pokemonStatsRef.innerHTML = getPokemonStats(array, j);
 
     const pokemonSliderRef = document.getElementById("pokemon-slider");
-    pokemonSliderRef.innerHTML = getPokemonSlider(j);
+    pokemonSliderRef.innerHTML = getPokemonSlider(array, j);
 
     openTab(event, "About");
 }
 
 
-function getAbilities(j) {
+function getAbilities(array, j) {
     const pokemonAbilities = [];
-    for (let i = 0; i < result[j].abilities.length; i++) {
-        let pokemonAbility = result[j].abilities[i].ability.name;
+    for (let i = 0; i < array[j].abilities.length; i++) {
+        let pokemonAbility = array[j].abilities[i].ability.name;
         pokemonAbilities.push(pokemonAbility);
     }
     stringResult = pokemonAbilities.join(", ", pokemonAbilities);
@@ -113,20 +114,20 @@ dialogRef.addEventListener('click', (event) => {
 });
 
 
-function goToPreviousCard(j) {
+function goToPreviousCard(array, j) {
     if (j === 0) {
-        showFullCard(result.length - 1);
+        showFullCard(array, array.length - 1);
     } else {
-        showFullCard(j - 1);
+        showFullCard(array, j - 1);
     }
 }
 
 
-function goToNextCard(j) {
-    if (j === result.length - 1) {
-        showFullCard(0);
+function goToNextCard(array, j) {
+    if (j === array.length - 1) {
+        showFullCard(array, 0);
     } else {
-        showFullCard(j + 1);
+        showFullCard(array, j + 1);
     }
 }
 //#endregion Full Card
@@ -146,7 +147,7 @@ searchBarInputRef.addEventListener("input", () => {
 
 
 function filterPokemon(){
-    currentPokemon = result.filter(isNameIncluded);
+    currentPokemon = initialPokemon.filter(isNameIncluded);
     if(currentPokemon.length < 1 || currentPokemon == undefined){
         openErrorMessage();
     } else{
@@ -183,7 +184,7 @@ function addMorePokemon(){
 //#endregion Load more Cards
 
 //#region Loader & Button
-function showLoadingScreen(){;
+function showLoadingScreen(){
     document.querySelector("#loading-screen").style.visibility = "visible";
 }
 
@@ -193,7 +194,7 @@ function hideLoadingScreen(){
 }
 
 
-function showMiniLoadingScreen(){;
+function showMiniLoadingScreen(){
     document.querySelector("#mini-loading-screen").style.display = "initial";
 }
 

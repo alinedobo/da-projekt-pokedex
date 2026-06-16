@@ -1,78 +1,78 @@
-function getTypeTwo(j) {
+function getTypeTwo(array, j) {
     return /*html*/ `
             <div class="poke-card-container">
-                <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+                <div class="poke-card ${array[j].types[0].type.name}" onclick="showFullCard(${array}, ${j})">
                     <div class="card-head">
-                        <h2>${result[j].name}</h2>
-                        <p>#${result[j].id}</p>
+                        <h2>${array[j].name}</h2>
+                        <p>#${array[j].id}</p>
                     </div>
                     <div class="pokemon-types">
-                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
-                        <p class="pokemon-type">${result[j].types[1].type.name}</p>
+                        <p class="pokemon-type ${array[j].types[0].type.name}">${array[j].types[0].type.name}</p>
+                        <p class="pokemon-type">${array[j].types[1].type.name}</p>
                     </div>
-                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${array[j].sprites.other.home.front_default}" alt="image of ${array[j].name}">
                 </div>
             </div>
         `;
 }
 
 
-function getNoTypeTwo(j) {
+function getNoTypeTwo(array, j) {
     return /*html*/ `
             <div class="poke-card-container">
-                <div class="poke-card ${result[j].types[0].type.name}" onclick="showFullCard(${j})">
+                <div class="poke-card ${array[j].types[0].type.name}" onclick="showFullCard(${array}, ${j})">
                     <div class="card-head">
-                        <h2>${result[j].name}</h2>
-                        <p>#${result[j].id}</p>
+                        <h2>${array[j].name}</h2>
+                        <p>#${array[j].id}</p>
                     </div>
                     <div class="pokemon-types">
-                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                        <p class="pokemon-type ${array[j].types[0].type.name}">${array[j].types[0].type.name}</p>
                     </div>
-                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${array[j].sprites.other.home.front_default}" alt="image of ${array[j].name}">
                 </div>
             </div>
         `;
 }
 
 
-function getPokemonSummaryTypeTwo(j) {
+function getPokemonSummaryTypeTwo(array, j) {
     return /*html*/ `
             <div class="poke-card-container">
-                <div class="poke-card ${result[j].types[0].type.name}">
+                <div class="poke-card ${array[j].types[0].type.name}">
                     <div class="card-head">
-                        <h2>${result[j].name}</h2>
-                        <p>#${result[j].id}</p>
+                        <h2>${array[j].name}</h2>
+                        <p>#${array[j].id}</p>
                     </div>
                     <div class="pokemon-types">
-                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
-                        <p class="pokemon-type">${result[j].types[1].type.name}</p>
+                        <p class="pokemon-type ${array[j].types[0].type.name}">${array[j].types[0].type.name}</p>
+                        <p class="pokemon-type">${array[j].types[1].type.name}</p>
                     </div>
-                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${array[j].sprites.other.home.front_default}" alt="image of ${array[j].name}">
                 </div>
             </div>
         `;
 }
 
 
-function getPokemonSummaryNoTypeTwo(j) {
+function getPokemonSummaryNoTypeTwo(array, j) {
     return /*html*/ `
             <div class="poke-card-container">
-                <div class="poke-card ${result[j].types[0].type.name}">
+                <div class="poke-card ${array[j].types[0].type.name}">
                     <div class="card-head">
-                        <h2>${result[j].name}</h2>
-                        <p>#${result[j].id}</p>
+                        <h2>${array[j].name}</h2>
+                        <p>#${array[j].id}</p>
                     </div>
                     <div class="pokemon-types">
-                        <p class="pokemon-type ${result[j].types[0].type.name}">${result[j].types[0].type.name}</p>
+                        <p class="pokemon-type ${array[j].types[0].type.name}">${array[j].types[0].type.name}</p>
                     </div>
-                    <img data-id="card-image" src="${result[j].sprites.other.home.front_default}" alt="image of ${result[j].name}">
+                    <img data-id="card-image" src="${array[j].sprites.other.home.front_default}" alt="image of ${array[j].name}">
                 </div>
             </div>
         `;
 }
 
 
-function getPokemonStats(j) {
+function getPokemonStats(array, j) {
     return /*html*/ `
         <div class="stats-container">
             <!-- Tab links -->
@@ -86,19 +86,19 @@ function getPokemonStats(j) {
                 <table>
                     <tr>
                         <th>Species:</th>
-                        <td class="poke-about-facts">${result[j].species.name}</td>
+                        <td class="poke-about-facts">${array[j].species.name}</td>
                     </tr>
                     <tr>
                         <th>Weight:</th>
-                        <td class="poke-about-facts">${result[j].weight / 10}kg</td>
+                        <td class="poke-about-facts">${array[j].weight / 10}kg</td>
                     </tr>
                     <tr>
                         <th>Height:</th>
-                        <td class="poke-about-facts">${result[j].height * 10}cm</td>
+                        <td class="poke-about-facts">${array[j].height * 10}cm</td>
                     </tr>
                     <tr>
                         <th>Abilities:</th>
-                        <td class="poke-about-facts">${getAbilities(j)}</td>
+                        <td class="poke-about-facts">${getAbilities(array, j)}</td>
                     </tr>
                 </table>
             </div>
@@ -106,23 +106,23 @@ function getPokemonStats(j) {
                 <table>
                     <tr>
                         <th>HP:</th>
-                        <td>${result[j].stats[0].base_stat}/100</td>
+                        <td>${array[j].stats[0].base_stat}/100</td>
                     </tr>
                     <tr>
                         <th>Attack:</th>
-                        <td>${result[j].stats[1].base_stat}/100</td>
+                        <td>${array[j].stats[1].base_stat}/100</td>
                     </tr>
                     <tr>
                         <th>Defense:</th>
-                        <td>${result[j].stats[2].base_stat}/100</td>
+                        <td>${array[j].stats[2].base_stat}/100</td>
                     </tr>
                     <tr>
                         <th>Special Attack:</th>
-                        <td>${result[j].stats[3].base_stat}/100</td>
+                        <td>${array[j].stats[3].base_stat}/100</td>
                     </tr>
                     <tr>
                         <th>Special Defense:</th>
-                        <td>${result[j].stats[4].base_stat}/100</td>
+                        <td>${array[j].stats[4].base_stat}/100</td>
                     </tr>
                 </table>
             </div>
@@ -131,9 +131,9 @@ function getPokemonStats(j) {
 }
 
 
-function getPokemonSlider(j) {
+function getPokemonSlider(array, j) {
     return /*html*/ `
-        <button data-id="card" data-id="prev-button" onclick="goToPreviousCard(${j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
-        <button data-id="card" data-id="next-button" onclick="goToNextCard(${j})"><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
+        <button data-id="card" data-id="prev-button" onclick="goToPreviousCard(${array}, ${j})"><img src="./Assets/icons/Arrow-left.svg" alt="left arrow"></button>
+        <button data-id="card" data-id="next-button" onclick="goToNextCard(${array}, ${j})"><img src="./Assets/icons/Arrow-Right.svg" alt="right arrow"></button>
     `;
 }
