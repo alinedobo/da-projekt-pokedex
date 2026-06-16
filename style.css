@@ -55,7 +55,7 @@ footer {
         padding: 16px;
         color: white;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 16px;
     }
 }
 
@@ -71,38 +71,48 @@ header {
         height: 40px;
     }
 
-    
     #search-bar {
         font-size: 20px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         width: 320px;
         gap: 8px;
         align-items: center;
-        
-        input {
-            width: 200px;
-            height: 30px;
-            background: white;
-            color: black;
+
+        div {
+            width: 100%;
         }
 
-        #more-letters{
+        #input-and-button {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+
+            input {
+                width: 200px;
+                height: 30px;
+                background: white;
+                color: black;
+            }
+
+            button {
+                border: 2px solid blue;
+                border-radius: 4px;
+                color: red;
+                background: rgb(255, 217, 0);
+                padding: 4px 8px;
+            }
+
+            button:disabled {
+                background: grey;
+                color: black;
+                border: none;
+            }
+        }
+        #more-letters {
             visibility: hidden;
-        }
-
-        button {
-            border: 2px solid blue;
-            border-radius: 4px;
-            color: red;
-            background: rgb(255, 217, 0);
-            padding: 4px 8px;
-        }
-
-        button:disabled {
-            background: grey;
-            color: black;
-            border: none;
+            align-self: flex-start;
         }
     }
 }
@@ -194,21 +204,21 @@ main {
         background-color: rgb(6, 23, 30, 0.5);
     }
 
-    #loading-screen{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    max-width: 1440px;
-    background: white;
-    z-index: 1;
-    
-    p{
-        color: black;
-        font-size: 24px;
+    #loading-screen {
         position: absolute;
-        top: 10%;
-        left: 10%;
+        height: 100%;
+        width: 100%;
+        max-width: 1440px;
+        background: white;
+        z-index: 1;
+
+        p {
+            color: black;
+            font-size: 24px;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
     }
-}
 }
 /*#endregion Main Content*/

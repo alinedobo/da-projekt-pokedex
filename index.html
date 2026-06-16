@@ -26,19 +26,23 @@
                 </a>
                 <h1>Aline's Pokedex</h1>
                 <div id="search-bar">
-                    <p id="more-letters">More.</p>
-                    <input 
-                    placeholder="Type at least 3 letters"
-                    type="text"
-                    id="search-bar-input"
-                    data-id="search-input"/>
-
-                    <button
-                    disabled
-                    id="search-button" 
-                    data-id=”search-button” 
-                    onclick="filterPokemon()">
-                    Search</button>
+                    <div id="input-and-button">
+                        <input 
+                        placeholder="Type at least 3 letters"
+                        type="text"
+                        id="search-bar-input"
+                        data-id="search-input"/>
+                        
+                        <button
+                        disabled
+                        id="search-button" 
+                        data-id=”search-button” 
+                        onclick="filterPokemon()">
+                        Search</button>
+                    </div>
+                    <div>
+                        <p id="more-letters">More letters...</p>
+                    </div>
                 </div>
             </section>
         </header>
