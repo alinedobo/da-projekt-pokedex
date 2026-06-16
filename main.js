@@ -22,6 +22,12 @@ async function getPokemon(offset) {
 
     renderCards();
 }
+
+function reloadPokemon(){
+    workingPokemon = fetchedPokemon;
+    renderPokemonSummary(workingPokemon);
+    document.getElementById("load-more-button").style.visibility = "visible";
+}
 //#endregion Get Data
 
 //#region Initial Rendering
@@ -83,21 +89,16 @@ function getAbilities(j) {
 
 
 function openTab(evt, tabName) {
-    // Declare all variables
     let tabcontent, tablinks;
-    // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
     for (let i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (let i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace("active", "");
     }
-    // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(tabName).style.display = "block";
-    /* evt.currentTarget.className += " active"; */
 }
 
 
@@ -132,12 +133,11 @@ function goToNextCard(j) {
 //#endregion Full Card
 
 //#region Search for Pokemon
-//Disable and enable search button
 const searchBarInputRef = document.getElementById("search-bar-input");
 const searchButtonRef = document.getElementById("search-button");
 const MIN_CHARS = 3;
 let searchInput = searchBarInputRef.value;
-// Listen for input events (typing, pasting, etc.)
+
 searchBarInputRef.addEventListener("input", () => {
     const inputLength = searchBarInputRef.value.trim().length;
 
@@ -159,6 +159,7 @@ function filterPokemon(){
         openErrorMessage();
     } else{
         renderPokemonSummary(workingPokemon);
+        document.getElementById("load-more-button").style.visibility = "hidden";
     }
     searchBarInputRef.value = "";
 }
