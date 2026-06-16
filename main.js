@@ -141,7 +141,7 @@ let searchInput = searchBarInputRef.value;
 // Listen for input events (typing, pasting, etc.)
 searchBarInputRef.addEventListener("input", () => {
     const inputLength = searchBarInputRef.value.trim().length;
-    // Enable button if input has at least MIN_CHARS
+
     if(inputLength === 0){
         document.getElementById("more-letters").style.visibility = "hidden";
     } else if(inputLength > 0 && inputLength < MIN_CHARS){

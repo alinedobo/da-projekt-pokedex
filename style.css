@@ -71,20 +71,25 @@ header {
         height: 40px;
     }
 
-    input {
-        width: 200px;
-        height: 30px;
-        background: white;
-        color: black;
-    }
-
+    
     #search-bar {
         font-size: 20px;
         display: flex;
         justify-content: space-between;
-        width: fit-content;
+        width: 320px;
         gap: 8px;
         align-items: center;
+        
+        input {
+            width: 200px;
+            height: 30px;
+            background: white;
+            color: black;
+        }
+
+        #more-letters{
+            visibility: hidden;
+        }
 
         button {
             border: 2px solid blue;
