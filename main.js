@@ -1,6 +1,6 @@
-const initialPokemon = [];
+const fetchedPokemon = [];
 let offsetVar = 0;
-let currentPokemon = [];
+let workingPokemon = fetchedPokemon;
 
 function init() {
     disableLoadMoreButton();
@@ -17,31 +17,31 @@ async function getPokemon(offset) {
     for (let i = 0; i < responseFromJson.results.length; i++) {
         let response = await fetch(responseFromJson.results[i].url);
         let singlePokemonData = await response.json();
-        initialPokemon.push(singlePokemonData);
+        fetchedPokemon.push(singlePokemonData);
     }
 
-    renderCards(initialPokemon);
+    renderCards();
 }
 //#endregion Get Data
 
 //#region Initial Rendering
 function renderCards() {
-    renderPokemonSummary(initialPokemon);
+    renderPokemonSummary(workingPokemon);
     hideLoadingScreen();
     hideMiniLoadingScreen();
     enableLoadMoreButton();
 }
 
 
-function renderPokemonSummary(array) {
+function renderPokemonSummary() {
     const cardWrapperRef = document.getElementById("card-wrapper");
     cardWrapperRef.innerHTML = "";
 
-    for (let j = 0; j < array.length; j++) {
-        if (array[j].types.length > 1) {
-            cardWrapperRef.innerHTML += getTypeTwo(array, j);
+    for (let j = 0; j < workingPokemon.length; j++) {
+        if (workingPokemon[j].types.length > 1) {
+            cardWrapperRef.innerHTML += getTypeTwo(j);
         } else {
-            cardWrapperRef.innerHTML += getNoTypeTwo(array, j);
+            cardWrapperRef.innerHTML += getNoTypeTwo(j);
         }
     }
 }
@@ -51,31 +51,30 @@ function renderPokemonSummary(array) {
 const dialogRef = document.getElementById("dialog-popup");
 
 
-function showFullCard(array, j) {
-    console.log("show full card is triggered");
+function showFullCard(j) {
     dialogRef.showModal();
 
     const pokemonSummaryRef = document.getElementById("pokemon-summary");
-    if (array[j].types.length > 1) {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(array, j);
+    if (workingPokemon[j].types.length > 1) {
+        pokemonSummaryRef.innerHTML = getPokemonSummaryTypeTwo(j);
     } else {
-        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(array, j);
+        pokemonSummaryRef.innerHTML = getPokemonSummaryNoTypeTwo(j);
     }
 
     const pokemonStatsRef = document.getElementById("pokemon-stats");
-    pokemonStatsRef.innerHTML = getPokemonStats(array, j);
+    pokemonStatsRef.innerHTML = getPokemonStats(j);
 
     const pokemonSliderRef = document.getElementById("pokemon-slider");
-    pokemonSliderRef.innerHTML = getPokemonSlider(array, j);
+    pokemonSliderRef.innerHTML = getPokemonSlider(j);
 
     openTab(event, "About");
 }
 
 
-function getAbilities(array, j) {
+function getAbilities(j) {
     const pokemonAbilities = [];
-    for (let i = 0; i < array[j].abilities.length; i++) {
-        let pokemonAbility = array[j].abilities[i].ability.name;
+    for (let i = 0; i < workingPokemon[j].abilities.length; i++) {
+        let pokemonAbility = workingPokemon[j].abilities[i].ability.name;
         pokemonAbilities.push(pokemonAbility);
     }
     stringResult = pokemonAbilities.join(", ", pokemonAbilities);
@@ -114,20 +113,20 @@ dialogRef.addEventListener('click', (event) => {
 });
 
 
-function goToPreviousCard(array, j) {
+function goToPreviousCard(j) {
     if (j === 0) {
-        showFullCard(array, array.length - 1);
+        showFullCard(workingPokemon.length - 1);
     } else {
-        showFullCard(array, j - 1);
+        showFullCard( j - 1);
     }
 }
 
 
-function goToNextCard(array, j) {
-    if (j === array.length - 1) {
-        showFullCard(array, 0);
+function goToNextCard(j) {
+    if (j === workingPokemon.length - 1) {
+        showFullCard(0);
     } else {
-        showFullCard(array, j + 1);
+        showFullCard(j + 1);
     }
 }
 //#endregion Full Card
@@ -145,7 +144,6 @@ searchBarInputRef.addEventListener("input", () => {
     if(inputLength === 0){
         document.getElementById("more-letters").style.visibility = "hidden";
     } else if(inputLength > 0 && inputLength < MIN_CHARS){
-        console.log("needs more letters");
         searchButtonRef.disabled = true;
         document.getElementById("more-letters").style.visibility = "visible";
     } else{
@@ -156,11 +154,11 @@ searchBarInputRef.addEventListener("input", () => {
 
 
 function filterPokemon(){
-    currentPokemon = initialPokemon.filter(isNameIncluded);
-    if(currentPokemon.length < 1 || currentPokemon == undefined){
+    workingPokemon = fetchedPokemon.filter(isNameIncluded);
+    if(workingPokemon.length < 1 || workingPokemon == undefined){
         openErrorMessage();
     } else{
-        renderPokemonSummary(currentPokemon);
+        renderPokemonSummary(workingPokemon);
     }
     searchBarInputRef.value = "";
 }
